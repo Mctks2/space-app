@@ -158,8 +158,6 @@ template {
 }
 [hidden] {
   display: none;
-}
-
-  `;
+}`;
 
 export default EstilosGlobais;

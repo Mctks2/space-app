@@ -1,48 +1,45 @@
-import styled from "styled-components";
-import Titulo from "../Titulo";
-import Tags from "./Tags";
-import Populares from "./Populares";
-import Imagem from "./Imagem";
+import { styled } from "styled-components"
+import Titulo from "../Titulo"
+import Tags from "./Tags"
+import Populares from "./Populares"
+import Imagem from "./Imagem"
 
 const GaleriaContainer = styled.div`
-  display: flex;
-`;
+    display: flex;
+    gap: 24px;
+`
 
 const SecaoFluida = styled.section`
-  flex-grow: 1; // Ocupa todo o espacamento restante
-`;
+    flex-grow: 1; // ocupa todo o espaço restante
+`
 
 const ImagensContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
-`;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+`
 
 const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito }) => {
-  return (
-    <>
-      <Tags />
+    return (
+        <>
+            <Tags />
+            <GaleriaContainer>
+                <SecaoFluida>
+                    <Titulo>Navegue pela galeria</Titulo>
+                    <ImagensContainer>
+                        {fotos.map(foto => <Imagem 
+                            aoZoomSolicitado={aoFotoSelecionada}
+                            aoAlternarFavorito={aoAlternarFavorito}
+                            key={foto.id} 
+                            foto={foto} />)
+                        }
+                    </ImagensContainer>
+                </SecaoFluida>
+                <Populares />
+            </GaleriaContainer>
+        </>
+    )
+}
 
-      <GaleriaContainer>
-        <SecaoFluida>
-          <Titulo>Navegue pela galeria </Titulo>
-          <ImagensContainer>
-            {/* percorre cada elemento do array */}
-            {fotos.map((foto) => (
-              <Imagem
-                aoZoomSolicitado={aoFotoSelecionada}
-                aoAlternarFavorito={aoAlternarFavorito}
-                key={foto.id}
-                foto={foto}
-              />
-            ))}
-          </ImagensContainer>
-        </SecaoFluida>
-        <Populares />
-      </GaleriaContainer>
-    </>
-  );
-};
-
-export default Galeria;
+export default Galeria
