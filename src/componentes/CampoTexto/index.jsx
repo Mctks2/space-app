@@ -32,7 +32,7 @@ const IconeLupa = styled.img`
 const CampoTexto = (props) => {
     return (
         <ContainerEstilizado>
-            <CampoTextoEstilizado {...props} />
+            <CampoTextoEstilizado {...props} placeholder="O que você procura?" type="text"/>
             <IconeLupa src={search} alt="ícone de lupa" />
         </ContainerEstilizado>
     )
